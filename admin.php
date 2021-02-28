@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION["user"]))
+if(isset($_SESSION["admin"]))
 {   
   
 
@@ -51,23 +51,14 @@ if(isset($_SESSION["user"]))
       <div class="row">
         <div class="col-lg-2" style="background-color: green;">
           <div class="row">
-            <div class="col-lg-12"  style="background-color: #2e8277;height:250px;align-content:center"><img class="img-fluid" src="images/user.svg" style="width:150px;margin-top:10px" alt="USER"/>
-              <h2>Welcome</h2>
+            <div class="col-lg-12"  style="background-color: #2e8277;height:250px;align-content:center"><img class="img-fluid" src="images/admin.jpg" style="width:150px;margin-top:10px" alt="USER"/>
+              <h2 style="color:white">Welcome<strong> Admin</strong></h2>
                  
               </div>
           </div>
           <div class="row" >
             <div class="col-lg-12" style="font-size:20px;background-color: #00bfa6;height:300px">
-             <p style="padding-top:15px;"><a href="#" style="color:white;"><span class="glyphicon glyphicon-dashboard"></span>  Dashboard</a></p> 
-                <p> <a href="UserProfile.php" style="color:white"><span class="glyphicon glyphicon-list-alt"></span>  Profile</a></p>
-               
-                <p> <a href="#" style="color:white"><span class="glyphicon glyphicon-edit"></span>  Request</a></p>
-               
-                <p><a href="#" style="color:white"><span class="glyphicon glyphicon-pencil"></span>  Create Ticket</a></p>
-                
-                <p><a href="#" style="color:white"><span class="glyphicon glyphicon-eye-open"></span>  View Ticket</a>
-                </p>
-                <p><a href="passwordChange.php" style="color:white"><span class="glyphicon glyphicon-pencil"></span>  Change Password</a></p>
+             
                 <a href="logout.php"> <button type="submit"  class="btn btn-danger" style="color:white" name= "logout"><span class="glyphicon glyphicon-off"></span>  logout</button></a>
                
             </div>

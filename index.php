@@ -3,8 +3,9 @@
 session_start();
 $message = "";
 
+
 if(isset($_POST['login'])){
-    
+   
     //check if form was submitted
   $username = $_POST['username']; //get input text
   $password = $_POST['UserPassword'];
@@ -29,12 +30,42 @@ if ($conn->connect_error) {
             
         }
         else{
-            echo 'wrong password';
+            echo 'Wrong User Password!! try Again';
            
         }
         mysqli_close($conn);
     }
-}    
+} 
+else if(isset($_POST['AdminLogin'])){
+    $username = $_POST['username']; //get input text
+  $password = $_POST['UserPassword'];
+    
+ // Create connection
+include('dbcon.php');
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+    else{
+        
+        $query = "select * from admin where id = '$username' and password = '$password'";
+        $result = mysqli_query($conn,$query);
+        $row = mysqli_num_rows($result);
+        if($row==1){
+            $_SESSION["admin"] = $username;
+        
+           header("location:admin.php");
+             
+            
+        }
+        else{
+            echo 'Wrong Admin password';
+           
+        }
+        mysqli_close($conn);
+    }
+}
 ?>
 
 
@@ -138,15 +169,15 @@ ADMIN LOGIN
         </button>
       </div>
       <div class="modal-body">
-       <form>
+       <form action="" method="post">
   <div class="form-group">
     <label for="exampleInputEmail1">Admin ID</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Admin ID" required>
+    <input type="text" name = "username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Admin ID" required>
     
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+    <input type="password" name="UserPassword" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
   </div>
  
   <button type="submit" name = "AdminLogin" class="btn btn-primary">Login</button>
