@@ -1,3 +1,3 @@
 hellow world
 
-<p>Heading removed and paragraph is added.</p>
+<title>Title added</title>
