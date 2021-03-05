@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2021 at 10:39 AM
+-- Generation Time: Mar 05, 2021 at 09:15 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -65,15 +65,38 @@ CREATE TABLE `user` (
   `name` varchar(30) NOT NULL,
   `gender` varchar(2) NOT NULL,
   `address` varchar(100) NOT NULL,
-  `image` varchar(50) NOT NULL
+  `image` varchar(50) NOT NULL,
+  `Time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`email`, `password`, `contact`, `id`, `name`, `gender`, `address`, `image`) VALUES
-('tejveersharma384@gmail.com', '123456', '9045704462', 1, 'Ram Prakash', 'M', 'SURAKSHA VIHAR COLONY, ALIGARH', '');
+INSERT INTO `user` (`email`, `password`, `contact`, `id`, `name`, `gender`, `address`, `image`, `Time`) VALUES
+('tejveersharma384@gmail.com', '1234567', '9045704462', 1, 'Ram Prakash', 'M', 'SURAKSHA VIHAR COLONY, ALIGARH', '', '2021-03-05 07:42:36.959922'),
+('ravi123@gmail.com', 'ravi1234', '9012121212', 2, 'ravi', 'm', 'rampur gabhaana aligarh', '', '2021-03-05 07:42:36.959922'),
+('ramprassh@gmail.com', 'sldfjklksdfj', '9034232323', 3, 'Ram Prakash', 'M', 'ram pyari viahar', '', '2021-03-05 07:42:36.959922');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

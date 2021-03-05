@@ -1,42 +1,10 @@
 <?php
-
-$message = "";
-if(isset($_POST['submit'])){ //check if form was submitted
-  $email = $_POST['email']; //get input text
-    $contact = $_POST['contact'];
-    $confirmPassword = $_POST['confirmPassword'];
- // Create connection
-include('dbcon.php');
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-    else{
-        $q1 = "select * from user where email = '$email' && contact = '$contact'";
-        $res=mysqli_query($conn,$q1);
-	$num=mysqli_num_rows($res);
-       if($num===1){
-           
-        $sql = "update user set password = '$confirmPassword' where email = '$email' && contact = '$contact'";
-        $result = mysqli_query($conn, $sql);
-           print "<p>Successfull updation</p>";
-           
-           
-       }
-        else{
-            echo 'Something is wrong;';
-        }
-        
-        
-        
-    mysqli_close($conn);
-} 
-}
+session_start();
+if(isset($_SESSION["user"]))
+{   
+  
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -135,7 +103,7 @@ if (name==null || name==""){
 </nav>
            
             
-                <div class="Form" style="margin-left:50px;"><form name="myform" action="" method="post" onsubmit="return validateForm()">
+                <div class="Form" style="margin-left:50px;"><form name="myform" action="HomeDatabase.php" method="post" onsubmit = "return validateForm()">
   <div class="input-group col-lg-10" style="padding-top: 15px">
     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
     <input id="email" type="text" class="form-control" name="email" placeholder="Email" required>
@@ -166,3 +134,11 @@ if (name==null || name==""){
   
   </body>
 </html>
+
+<?php 
+}
+else 
+{
+    header('location:index.php');
+}
+?>
