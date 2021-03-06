@@ -63,7 +63,65 @@ if(isset($_SESSION["user"]))
                
                 <p> <a href="#" style="color:white"><span class="glyphicon glyphicon-edit"></span>  Request</a></p>
                
-                <p><a href="#" style="color:white"><span class="glyphicon glyphicon-pencil"></span>  Create Ticket</a></p>
+                <p><a  data-toggle="modal" href="#exampleModalLong" style="color:white"><span class="glyphicon glyphicon-pencil"></span>  Create Ticket</a></p>
+                
+                <!--Create Ticket Modal here -->
+                <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle">Create Ticket </h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        
+      <div class="modal-body">
+       <form action="HomeDatabase.php" method="post">
+           
+  <div class="form-group col-sm-12">
+    <label for="subject">Subject</label>
+       <input type="text"  name ="subject" class="form-control" id="subject" aria-describedby="emailHelp" placeholder="Write subject">
+    </div>
+            <div class="form-group col-sm-6">
+      <label for="tasktype">Task Type</label>
+      <select name ="type" id="tasktype" class="form-control">
+        <option selected>Choose</option>
+          <option>Billing</option>
+        <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+      </select>
+    </div>
+  
+           <div class="form-group col-sm-6">
+      <label for="priority">Priority</label>
+      <select id="priority" name="priority" class="form-control">
+        <option selected>Non Urgent</option>
+        <option>Urgent</option>
+          <option>Important</option>
+         
+      </select>
+    </div>
+            <div class="form-group col-sm-12">
+    <label for="description">Description</label>
+    <textarea name ="ticket" class="form-control" id="description" rows="3"></textarea>
+  </div>
+  
+  <button type="submit" name="submitPost" class="btn btn-primary" style="margin-left:15px;"><span class="glyphicon glyphicon-pencil"></span> Post</button> 
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
                 
                 <p><a href="#" style="color:white"><span class="glyphicon glyphicon-eye-open"></span>  View Ticket</a>
                 </p>
@@ -93,7 +151,7 @@ if(isset($_SESSION["user"]))
             </div>
             
             <div class="row">
-            <div class="col-lg-5" style="background-color: violet;height:100px"><a href="" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-pencil"></span>  Create Ticket</h3><div class="progress">
+            <div class="col-lg-5" style="background-color: violet;height:100px"><a  data-toggle="modal" href="#exampleModalLong" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-pencil"></span>  Create Ticket</h3><div class="progress">
   <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 </div></a></div>
             <div class="col-lg-5" style="background-color: MEDIUMSEAGREEN;height:100px"><a href="" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-eye-open"></span>  View Ticket</h3><div class="progress">

@@ -61,6 +61,33 @@ if ($conn->connect_error) {
 } 
 }
 
+else if(isset($_POST['submitPost'])){
+    
+    session_start();
+    
+    //collect form input
+    $id = $_SESSION['user'];
+    $subject = $_POST['subject'];
+    $ticket = $_POST['ticket'];
+    $priority = $_POST['priority'];
+    $type = $_POST['type'];
+    
+    
+    include('dbcon.php');
+    
+    if($conn->connect_error){
+        die("Connection Failed: " . $conn->connect_error);
+    }
+    
+    else{
+        $query = "insert into ticket(ticket, email, subject, type, priority) values('$ticket', '$id', '$subject', '$type', '$priority');";
+        $result = mysqli_query($conn, $query);
+        header('location: User.php');
+        mysqli_close($conn);
+        
+    }
+}
+
 
 include('dbcon.php');
 
@@ -69,8 +96,12 @@ include('dbcon.php');
 }
     else{
         $q1 = "select * from user";
-        $res = mysqli_query($conn,$q1);
+        $res = mysqli_query($conn, $q1);
 	    $num = mysqli_num_rows($res);
+        
+        $q2 = "SELECT * FROM user WHERE Date(time) = CURRENT_DATE()";
+        $res2 = mysqli_query($conn, $q2);
+        $today = mysqli_num_rows($res2);
     mysqli_close($conn);
 } 
     

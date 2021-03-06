@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2021 at 09:15 AM
+-- Generation Time: Mar 06, 2021 at 11:03 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -54,6 +54,44 @@ CREATE TABLE `services` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `test`
+--
+
+CREATE TABLE `test` (
+  `id` int(11) NOT NULL,
+  `date` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`id`, `date`) VALUES
+(1, '2021-03-05 10:55:59.720346'),
+(0, '2021-03-01 03:05:31.406476');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ticket`
+--
+
+CREATE TABLE `ticket` (
+  `ticket_id` int(11) NOT NULL,
+  `type` varchar(30) NOT NULL,
+  `subject` varchar(100) NOT NULL,
+  `ticket` varchar(100) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `priority` varchar(20) NOT NULL,
+  `status` varchar(10) NOT NULL DEFAULT 'open',
+  `posting_tIme` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `remark` varchar(100) NOT NULL,
+  `remark_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -74,13 +112,20 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`email`, `password`, `contact`, `id`, `name`, `gender`, `address`, `image`, `Time`) VALUES
-('tejveersharma384@gmail.com', '1234567', '9045704462', 1, 'Ram Prakash', 'M', 'SURAKSHA VIHAR COLONY, ALIGARH', '', '2021-03-05 07:42:36.959922'),
-('ravi123@gmail.com', 'ravi1234', '9012121212', 2, 'ravi', 'm', 'rampur gabhaana aligarh', '', '2021-03-05 07:42:36.959922'),
-('ramprassh@gmail.com', 'sldfjklksdfj', '9034232323', 3, 'Ram Prakash', 'M', 'ram pyari viahar', '', '2021-03-05 07:42:36.959922');
+('tejveersharma384@gmail.com', '1234567', '9045704462', 1, 'Ram Prakash', 'M', 'SURAKSHA VIHAR COLONY, ALIGARH', '', '2021-03-01 07:42:36.959922'),
+('ravi123@gmail.com', 'ravi1234', '9012121212', 2, 'ravi', 'm', 'rampur gabhaana aligarh', '', '2021-03-01 07:42:36.959922'),
+('ramprassh@gmail.com', 'sldfjklksdfj', '9034232323', 3, 'Ram Prakash', 'M', 'ram pyari viahar', '', '2021-03-02 07:42:36.959922'),
+('hardik@gmail.com', 'skldjflkj', '9090909090', 7, 'Hardik', 'M', 'Eitah mainpuri aligarh', '', '2021-03-05 11:02:00.000000');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `ticket`
+--
+ALTER TABLE `ticket`
+  ADD PRIMARY KEY (`ticket_id`);
 
 --
 -- Indexes for table `user`
@@ -93,10 +138,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `ticket`
+--
+ALTER TABLE `ticket`
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

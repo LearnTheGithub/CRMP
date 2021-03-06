@@ -94,20 +94,22 @@ Change Password
 </nav>
             
             <div class="row" style="align-content:center;">
-            <div class="col-lg-5" style="background-color: TOMATO; height:100px"><a href="" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-user"></span>  Overall Visitors</h3></a><br>
-                <div class="col-sm-6" style="border-right: 6px solid #39CCCC;">Div1</div><div class="col-sm-6">Div2</div>
+            <div class="col-lg-5" style="background-color: #f55538; height:100px"><a href="" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-user"></span>  Overall Visitors</h3></a><br>
+                <div class="col-sm-6" style="border-right: 2px solid #d93214;text-align: center;">Div1</div><div class="col-sm-6" style="text-align: center;">Div2</div>
                 </div>
             <div class="col-lg-5" style="background-color: ORANGE;height:100px"><a href="#" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-comment"></span>  Registered Users</h3></a><br>
-                <div class="col-sm-6" style="border-right: 6px solid #39CCCC;">Overall: <span class="badge badge-secondary"><?php require('HomeDatabase.php');
+                <div class="col-sm-6" style="border-right: 2px solid #c78202;text-align: center;">Overall: <span class="badge badge-secondary"><?php require('HomeDatabase.php');
                     echo $num;
-                    ?></span></div><div class="col-sm-6">Today</div></div>
+                    ?></span></div><div class="col-sm-6" style="text-align: center;">Today: <span class="badge badge-secondary"><?php require('HomeDatabase.php');
+                    echo $today;
+                    ?></span></div></div>
             </div>
             
             <div class="row">
-            <div class="col-lg-5" style="background-color: violet;height:100px"><a href="" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-pencil"></span>  Qoute requests</h3></a><br>
-                <div class="col-sm-6" style="border-right: 6px solid #39CCCC;">Div1</div><div class="col-sm-6">Div2</div></div>
-            <div class="col-lg-5" style="background-color: MEDIUMSEAGREEN;height:100px"><a href="" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-eye-open"></span> Overall Tickets </h3></a><br>
-                <div class="col-sm-6" style="border-right: 6px solid #39CCCC;">Div1</div><div class="col-sm-6">Div2</div></div>
+            <div class="col-lg-5" style="background-color: violet;height:100px"><a href="" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-pencil"></span>  Quotes requests</h3></a><br>
+                <div class="col-sm-6" style="border-right: 2px solid #c225bd;text-align: center;">Div1</div><div class="col-sm-6" style="text-align: center;">Div2</div></div>
+            <div class="col-lg-5" style="background-color: #25d976;height:100px"><a href="" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-eye-open"></span> Overall Tickets </h3></a><br>
+                <div class="col-sm-6" style="border-right: 2px solid #17a356;text-align: center;">Div1</div><div class="col-sm-6" style="text-align: center;">Div2</div></div>
             </div>
         </div>
       </div>
