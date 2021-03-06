@@ -103,6 +103,51 @@ include('dbcon.php');
         $res2 = mysqli_query($conn, $q2);
         $today = mysqli_num_rows($res2);
     mysqli_close($conn);
+}
+
+$USER = $_SESSION['user'];
+ //check if form was submitted
+  
+ // Create connection
+include('dbcon.php');
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+    else{
+        
+        $q1 = "select * from user where email = '$USER'";
+        $res=mysqli_query($conn,$q1);
+        $array = mysqli_fetch_array($res);
+ mysqli_close($conn);
 } 
+
+if(isset($_POST['submit'])){ //check if form was submitted
+ 
+  
+    $contact = $_POST['contact'];
+    $name  = $_POST['name'];
+    $address = $_POST['address'];
+    
+    $email = $_SESSION['user'];
+    
+ // Create connection
+include('dbcon.php');
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+    else{
+        
+        
+        $sql = "update user set contact = '$contact', name = '$name', address ='$address'  where email = '$email'";
+        $result = mysqli_query($conn, $sql);
+           print "<p>Successfull updation</p>";
+      header('location: User.php');
+      mysqli_close($conn);
+} 
+}
     
 ?>

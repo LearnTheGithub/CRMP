@@ -2,13 +2,38 @@
 session_start();
 if(isset($_SESSION["user"]))
 {   
-  
+  include('HomeDatabase.php');
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
+      <script>  
+function validateForm(){  
+var name=document.myform.email.value;  
+    var contact=document.myform.contact.value;
+var password=document.myform.password.value;  
+ var password2=document.myform.confirmPassword.value;  
+if (name==null || name==""){  
+  alert("Name can't be blank"); 
+    
+  return false;  
+}
+    else if(contact.length>10 || contact.length<10){
+            alert("Contact must contain 10 digits.")
+            }
+    else if(password.length<6){  
+  alert("Password must be at least 6 characters long.");  
+  return false;  
+  }
+    else if(password!=password2){
+        alert("Both Password must be same!!");
+        return false;
+    }
+    
+}  
+</script>  
       <style>
           .container{
               box-shadow: 10px 10px 5px #aaaaaa;
@@ -59,8 +84,52 @@ if(isset($_SESSION["user"]))
           <div class="row" >
             <div class="col-lg-12" style="font-size:20px;background-color: #00bfa6;height:320px">
              <p style="padding-top:15px;"><a href="#" style="color:white;"><span class="glyphicon glyphicon-dashboard"></span>  Dashboard</a></p> 
-                <p> <a href="UserProfile.php" style="color:white"><span class="glyphicon glyphicon-list-alt"></span>  Profile</a></p>
-               
+                <p> <a data-toggle="modal" href="#profileModal" style="color:white"><span class="glyphicon glyphicon-list-alt"></span>  Profile</a></p>
+
+
+<!-- Modal -->
+<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center">
+        <h3 class="modal-title" id="exampleModalLabel">Hi <?php echo $array["name"] ?>, Your Profile</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="margin-left:50px">
+          
+          <form name="myform" action="" method="post" onsubmit="return validateForm()">
+                    
+  <div class="input-group col-lg-10" style="padding-top: 15px">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input id="email" type="text" class="form-control" name="email" value ="<?php echo $array["email"] ?>" placeholder="Email" disabled required>
+  </div>
+                     <div class="input-group col-lg-10" style="padding-top: 15px">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+    <input id="contact" name = "contact" type="text" class="form-control" value ="<?php echo $array["contact"] ?>" placeholder="Contact" required>
+  </div>
+  <div class="input-group col-lg-10" style="padding-top: 15px">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input id="name" type="text" class="form-control" name="name" value ="<?php echo $array["name"] ?>" placeholder="Name"required>
+  </div>
+  <div class="input-group col-lg-10" style="padding-top: 15px">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+    <input id="address" type="text" class="form-control" name="address" value ="<?php echo $array["address"] ?>"  placeholder="Address" required>
+  </div>
+      <button type="submit" style="margin-top:15px;margin-bottom:10px;" class="btn btn-primary"  name="submit" >Update Now!</button>
+    
+</form>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+                
                 <p> <a href="#" style="color:white"><span class="glyphicon glyphicon-edit"></span>  Request</a></p>
                
                 <p><a  data-toggle="modal" href="#exampleModalLong" style="color:white"><span class="glyphicon glyphicon-pencil"></span>  Create Ticket</a></p>
@@ -125,7 +194,49 @@ if(isset($_SESSION["user"]))
                 
                 <p><a href="#" style="color:white"><span class="glyphicon glyphicon-eye-open"></span>  View Ticket</a>
                 </p>
-                <p><a href="passwordChange.php" style="color:white"><span class="glyphicon glyphicon-pencil"></span>  Change Password</a></p>
+                <p><a data-toggle="modal" href="#exampleModal" style="color:white"><span class="glyphicon glyphicon-pencil"></span>  Change Password</a></p>
+                
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align: center">
+        <h3 class="modal-title" id="exampleModalLabel">Change password Now! </h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="margin-left:50px">
+       <form name="myform" action="HomeDatabase.php" method="post" onsubmit = "return validateForm()">
+  <div class="input-group col-lg-10" style="padding-top: 15px">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input id="email" type="text" class="form-control" name="email" placeholder="Email" required>
+  </div>
+                     <div class="input-group col-lg-10" style="padding-top: 15px">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+    <input id="contact" type="varchar" class="form-control" name="contact" placeholder="contact" required>
+  </div>
+  <div class="input-group col-lg-10" style="padding-top: 15px">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
+  </div>
+  <div class="input-group col-lg-10" style="padding-top: 15px">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="msg" type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password" required>
+  </div>
+      <button type="submit" style="margin-top:15px;margin-bottom:10px;" class="btn btn-primary"  name="submit" >Change Now!</button>
+    
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
                 <a href="logout.php"> <button type="submit"  class="btn btn-danger" style="color:white;" name= "logout"><span class="glyphicon glyphicon-off"></span>  logout</button></a>
                
             </div>
@@ -142,7 +253,7 @@ if(isset($_SESSION["user"]))
 </nav>
             
             <div class="row" style="align-content:center;">
-            <div class="col-lg-5" style="background-color: TOMATO; height:100px"><a href="UserProfile.php" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-user"></span>  Profile</h3><div class="progress">
+            <div class="col-lg-5" style="background-color: TOMATO; height:100px"><a data-toggle="modal" href="#profileModal" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-user"></span>  Profile</h3><div class="progress">
   <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 </div></a></div>
             <div class="col-lg-5" style="background-color: ORANGE;height:100px"><a href="#" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-comment"></span>  Suggestion</h3><div class="progress">
@@ -168,7 +279,7 @@ if(isset($_SESSION["user"]))
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  
+  <script src="index.js"></script>
   </body>
 </html>
 
