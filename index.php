@@ -116,7 +116,7 @@ if ($conn->connect_error) {
         background-color: aquamarine;
       }
 
-      .form-group {
+      #login-form {
         background-color: bisque;
       }
       .responsive {
