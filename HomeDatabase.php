@@ -28,6 +28,8 @@ mysqli_close($conn);
 
 }
 
+
+
 else if(isset($_POST['submit'])){ //check if form was submitted
   $email = $_POST['email']; //get input text
     $contact = $_POST['contact'];

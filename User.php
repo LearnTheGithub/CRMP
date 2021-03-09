@@ -2,9 +2,11 @@
 session_start();
 if(isset($_SESSION["user"]))
 {   
+    $email = $_SESSION["user"];
   include('HomeDatabase.php');
-
+    
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,8 +79,8 @@ if (name==null || name==""){
         <div class="col-lg-2" style="background-color: green;">
           <div class="row">
             <div class="col-lg-12"  style="background-color: #2e8277;height:250px;align-content:center"><img class="img-fluid" src="images/user.svg" style="width:150px;margin-top:10px" alt="USER"/>
-              <h2>Welcome</h2>
-                 
+              <h2 style="color:white">Welcome,</h2>
+                 <h4 style="color:white"><?php echo $array["name"] ?></h4>
               </div>
           </div>
           <div class="row" >
@@ -192,7 +194,7 @@ if (name==null || name==""){
   </div>
 </div>
                 
-                <p><a href="#" style="color:white"><span class="glyphicon glyphicon-eye-open"></span>  View Ticket</a>
+                <p><a href="#viewTicket" data-toggle="modal" style="color:white"><span class="glyphicon glyphicon-eye-open"></span>  View Ticket</a>
                 </p>
                 <p><a data-toggle="modal" href="#exampleModal" style="color:white"><span class="glyphicon glyphicon-pencil"></span>  Change Password</a></p>
                 
@@ -253,26 +255,91 @@ if (name==null || name==""){
 </nav>
             
             <div class="row" style="align-content:center;">
-            <div class="col-lg-5" style="background-color: TOMATO; height:100px"><a data-toggle="modal" href="#profileModal" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-user"></span>  Profile</h3><div class="progress">
-  <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-</div></a></div>
-            <div class="col-lg-5" style="background-color: ORANGE;height:100px"><a href="#" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-comment"></span>  Suggestion</h3><div class="progress">
-  <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-</div></a></div>
+            <div class="col-lg-5" style="background-color: TOMATO; height:100px"><a data-toggle="modal" href="#profileModal" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-user"></span>  Profile</h3></a></div>
+                
+                
+            <div class="col-lg-5" style="background-color: ORANGE;height:100px"><a href="#" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-comment"></span>  Suggestion</h3></a></div>
             </div>
             
             <div class="row">
-            <div class="col-lg-5" style="background-color: violet;height:100px"><a  data-toggle="modal" href="#exampleModalLong" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-pencil"></span>  Create Ticket</h3><div class="progress">
-  <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-</div></a></div>
-            <div class="col-lg-5" style="background-color: MEDIUMSEAGREEN;height:100px"><a href="" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-eye-open"></span>  View Ticket</h3><div class="progress">
-  <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-</div></a></div>
+            <div class="col-lg-5" style="background-color: violet;height:100px"><a  data-toggle="modal" href="#exampleModalLong" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-pencil"></span>  Create Ticket</h3></a></div>
+                
+            <div class="col-lg-5" style="background-color: MEDIUMSEAGREEN;height:100px"><a href="#viewTicket" data-toggle="modal" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-eye-open"></span>  View Ticket</h3></a></div>
+               
+<!-- View Ticket Modal -->
+<div class="modal fade" id="viewTicket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center">
+        <h2 class="modal-title" id="exampleModalLabel">View Tickets</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+          <p><span style="font-weight:bold;background-color:#fcb1b8">Open</span>
+              <span style="font-weight:bold;background-color:#9ff5a9">Solved</span></p>
+          
+      </div>
+      <div class="modal-body">
+          <!-- view modal content -->
+     <?php 
+        include('dbcon.php');
+    if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+} 
+    else{
+    $query= "SELECT * FROM ticket where email = '$email' ";
+    $res = mysqli_query($conn, $query);
+    
+        $no = mysqli_num_rows($res);
+        
+echo "</table>"; 
+echo "<table class='table'>
+  <thead>
+    <tr>
+      <th scope='col'>Type</th>
+      <th scope='col'>Subject</th>
+      <th scope='col'>Remark</th>
+    </tr>
+  </thead>
+  <tbody>";
+   
+  while($row = mysqli_fetch_array($res)){
+      if($row['status']=='open'){
+      $color = '#fcb1b8';
+      }
+      else
+      {
+          $color = '#9ff5a9';
+      }
+    echo "<tr class = 'table-primary'>
+      <td style = 'background-color:".$color."'>".$row['type']. "</td>
+      
+      <td style = 'background-color:".$color."'>".$row['subject']."</td>
+      
+      <td style = 'background-color:".$color."'>".$row['remark']."</td>
+ </tr>";
+  }
+        
+echo "</table>";
+   
+}
+    
+?>
+      </div>
+      <div class="modal-footer">
+          
+         
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    
+      </div>
+    </div>
+  </div>
+</div>
             </div>
         </div>
       </div>
     </div>
-      
+     
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
