@@ -258,7 +258,91 @@ if (name==null || name==""){
             <div class="col-lg-5" style="background-color: TOMATO; height:100px"><a data-toggle="modal" href="#profileModal" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-user"></span>  Profile</h3></a></div>
                 
                 
-            <div class="col-lg-5" style="background-color: ORANGE;height:100px"><a href="#" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-comment"></span>  Suggestion</h3></a></div>
+            <div class="col-lg-5" style="background-color: ORANGE;height:100px"><a href="#requestModal" data-toggle="modal" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-comment"></span>  Request Service</h3></a></div>
+  
+                <!-- request service modal -->
+             
+<div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style =" text-align: center">
+        <h2 class="modal-title" id="exampleModalLongTitle">REQUEST SERVICE</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="#here.php" method="post">
+                <div class="form-row">
+                <div class="form-group col-md-6">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Name" required>
+    </div>
+                </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="Email" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="contact">Contact</label>
+      <input type="text" class="form-control" id="contact" placeholder="Contact" required>
+    </div>
+  </div>
+  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="city">City</label>
+      <input type="text" class="form-control" id="city">
+    </div>
+    
+
+  </div>
+                <!-- php for getting service list for checkboxes -->
+               <div class="form-group">
+<?php 
+                include('dbcon.php');
+                if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+}
+    else{
+        $queryForList = "SELECT type FROM services WHERE status = 'yes'";
+        $result = mysqli_query($conn, $queryForList);
+        while($row = mysqli_fetch_array($result)){
+            ?>
+    
+           <div class="form-check col-sm-6">
+      <input name ="type" class="form-check-input" type="checkbox" id="name" value="<?php echo $row['type']; ?>">
+      <label class="form-check-label" for="gridCheck">
+        <?php echo $row['type']; ?>
+      </label>
+    </div>
+    
+           
+    <?php
+    
+   
+            
+        }
+        mysqli_close($conn);
+    }
+                ?>
+    
+    </div>
+                <div class="form-group col-sm-12" >
+    <label for="other" style="margin-top:20px;">Any Other Service</label>
+    <textarea class="form-control" id="other" rows="2" placeholder="type other text here...."></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary" style="margin-top:20px">Create Request !</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
             </div>
             
             <div class="row">

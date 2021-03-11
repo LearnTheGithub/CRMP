@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2021 at 11:03 AM
+-- Generation Time: Mar 11, 2021 at 12:20 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -48,8 +48,30 @@ INSERT INTO `admin` (`id`, `password`) VALUES
 
 CREATE TABLE `services` (
   `type` varchar(100) NOT NULL,
-  `Sno` int(5) NOT NULL
+  `name` varchar(50) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `status` varchar(10) NOT NULL DEFAULT 'NO',
+  `contact` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`type`, `name`, `email`, `status`, `contact`) VALUES
+('Website Design & Development', '', '', 'NO', ''),
+('SEO (Search Engine Optimization)', '', '', 'NO', ''),
+('Web Hosting Services', '', '', 'NO', ''),
+('Ecommerce Development', '', '', 'NO', ''),
+('Online Payment Integration', '', '', 'NO', ''),
+('Dash board Application', '', '', 'NO', ''),
+('NewsLetter Design', '', '', 'NO', ''),
+('SMO (Social Media Optimization)', '', '', 'NO', ''),
+('Dynamic Website Design', '', '', 'NO', ''),
+(' Domain Registration', '', '', 'NO', ''),
+('Website Maintenance', '', '', 'NO', ''),
+('Logo Design', '', '', 'NO', ''),
+('Open Source Customization', '', '', 'NO', '');
 
 -- --------------------------------------------------------
 
@@ -89,6 +111,14 @@ CREATE TABLE `ticket` (
   `remark_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `ticket`
+--
+
+INSERT INTO `ticket` (`ticket_id`, `type`, `subject`, `ticket`, `email`, `priority`, `status`, `posting_tIme`, `remark`, `remark_time`) VALUES
+(1, 'Billing', '', 'This is problem description. i want solution as sooon as possible.', 'tejveersharma384@gmail.com', 'Urgent', 'open', '2021-03-06 16:01:55.025899', '', '2021-03-06 16:01:55.025899'),
+(3, 'Option 1', 'problem 2', 'lskdfjlksdjfl klksjflkajf ', 'tejveersharma384@gmail.com', 'Non Urgent', 'close', '2021-03-09 09:20:34.654429', '', '2021-03-09 09:20:34.654429');
+
 -- --------------------------------------------------------
 
 --
@@ -112,7 +142,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`email`, `password`, `contact`, `id`, `name`, `gender`, `address`, `image`, `Time`) VALUES
-('tejveersharma384@gmail.com', '1234567', '9045704462', 1, 'Ram Prakash', 'M', 'SURAKSHA VIHAR COLONY, ALIGARH', '', '2021-03-01 07:42:36.959922'),
+('tejveersharma384@gmail.com', '123', '9045704462', 1, 'Tejveer Sharma', 'M', 'Suraksha Vihar Aligarh', '', '2021-03-01 07:42:36.959922'),
 ('ravi123@gmail.com', 'ravi1234', '9012121212', 2, 'ravi', 'm', 'rampur gabhaana aligarh', '', '2021-03-01 07:42:36.959922'),
 ('ramprassh@gmail.com', 'sldfjklksdfj', '9034232323', 3, 'Ram Prakash', 'M', 'ram pyari viahar', '', '2021-03-02 07:42:36.959922'),
 ('hardik@gmail.com', 'skldjflkj', '9090909090', 7, 'Hardik', 'M', 'Eitah mainpuri aligarh', '', '2021-03-05 11:02:00.000000');
