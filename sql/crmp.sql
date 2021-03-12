@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2021 at 12:20 PM
+-- Generation Time: Mar 12, 2021 at 11:27 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -43,35 +43,83 @@ INSERT INTO `admin` (`id`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `requests`
+--
+
+CREATE TABLE `requests` (
+  `type` varchar(100) NOT NULL,
+  `available` varchar(10) NOT NULL DEFAULT 'yes',
+  `name` varchar(50) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `status` varchar(10) NOT NULL DEFAULT 'NO',
+  `contact` varchar(12) NOT NULL,
+  `city` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `requests`
+--
+
+INSERT INTO `requests` (`type`, `available`, `name`, `email`, `status`, `contact`, `city`) VALUES
+('Website Design & Development', 'true', '', '', 'NO', '', ''),
+('SEO (Search Engine Optimization)', 'true', '', '', 'NO', '', ''),
+('Web Hosting Services', 'true', '', '', 'NO', '', ''),
+('Ecommerce Development', 'true', '', '', 'NO', '', ''),
+('Online Payment Integration', 'true', '', '', 'NO', '', ''),
+('Dash board Application', 'true', '', '', 'NO', '', ''),
+('NewsLetter Design', 'true', '', '', 'NO', '', ''),
+('SMO (Social Media Optimization)', 'true', '', '', 'NO', '', ''),
+('Dynamic Website Design', 'true', '', '', 'NO', '', ''),
+(' Domain Registration', 'true', '', '', 'NO', '', ''),
+('Website Maintenance', 'true', '', '', 'NO', '', ''),
+('Logo Design', 'true', '', '', 'NO', '', ''),
+('Open Source Customization', 'true', '', '', 'NO', '', ''),
+('Devops ', 'true', 'TEJVEER SHARMA', 'tejveersharma384@gmail.com', 'yes', '9045704462', ''),
+('Devops ', 'true', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('Dynamic Website Design', 'true', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+(' Domain Registration', 'true', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('Logo Design', 'true', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('Ecommerce Development', 'true', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('Dynamic Website Design', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('', 'not', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('Open Source Customization', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('', 'not', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('Dash board Application', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('Website Design & Development', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('Ecommerce Development', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('Dash board Application', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('android applicatin', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('android application', 'not', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `services`
 --
 
 CREATE TABLE `services` (
-  `type` varchar(100) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `status` varchar(10) NOT NULL DEFAULT 'NO',
-  `contact` varchar(12) NOT NULL
+  `Sno` int(3) NOT NULL,
+  `type` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `services`
 --
 
-INSERT INTO `services` (`type`, `name`, `email`, `status`, `contact`) VALUES
-('Website Design & Development', '', '', 'NO', ''),
-('SEO (Search Engine Optimization)', '', '', 'NO', ''),
-('Web Hosting Services', '', '', 'NO', ''),
-('Ecommerce Development', '', '', 'NO', ''),
-('Online Payment Integration', '', '', 'NO', ''),
-('Dash board Application', '', '', 'NO', ''),
-('NewsLetter Design', '', '', 'NO', ''),
-('SMO (Social Media Optimization)', '', '', 'NO', ''),
-('Dynamic Website Design', '', '', 'NO', ''),
-(' Domain Registration', '', '', 'NO', ''),
-('Website Maintenance', '', '', 'NO', ''),
-('Logo Design', '', '', 'NO', ''),
-('Open Source Customization', '', '', 'NO', '');
+INSERT INTO `services` (`Sno`, `type`) VALUES
+(1, 'Website Design & Development'),
+(2, 'Ecommerce Development'),
+(3, 'Ecommerce Development'),
+(4, 'Online Payment Integration'),
+(5, 'Dash board Application'),
+(6, 'NewsLetter Design'),
+(7, 'Social Media Optimization'),
+(8, 'Dynamic Website Design'),
+(9, 'Domain Registration'),
+(10, 'Website Maintenance'),
+(11, 'Logo Design'),
+(12, 'Open Source Customization'),
+(13, 'Devops');
 
 -- --------------------------------------------------------
 
@@ -152,6 +200,12 @@ INSERT INTO `user` (`email`, `password`, `contact`, `id`, `name`, `gender`, `add
 --
 
 --
+-- Indexes for table `services`
+--
+ALTER TABLE `services`
+  ADD PRIMARY KEY (`Sno`);
+
+--
 -- Indexes for table `ticket`
 --
 ALTER TABLE `ticket`
@@ -166,6 +220,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `services`
+--
+ALTER TABLE `services`
+  MODIFY `Sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `ticket`

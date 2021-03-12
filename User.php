@@ -4,6 +4,18 @@ if(isset($_SESSION["user"]))
 {   
     $email = $_SESSION["user"];
   include('HomeDatabase.php');
+ include('dbcon.php');
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+    else{
+        
+       
+        $q1 = "select * from user where email = '$email'";
+        $res=mysqli_query($conn,$q1);
+        $array = mysqli_fetch_array($res);
+ mysqli_close($conn);
+} 
     
 ?>
 
@@ -272,28 +284,28 @@ if (name==null || name==""){
         </button>
       </div>
       <div class="modal-body">
-        <form action="#here.php" method="post">
+        <form action="HomeDatabase.php" method="post">
                 <div class="form-row">
                 <div class="form-group col-md-6">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Name" required>
+      <input name ="name" type="text" class="form-control" id="name" placeholder="Name" required>
     </div>
                 </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" placeholder="Email" required>
+      <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
     </div>
     <div class="form-group col-md-6">
       <label for="contact">Contact</label>
-      <input type="text" class="form-control" id="contact" placeholder="Contact" required>
+      <input type="text" name="contact" class="form-control" id="contact" placeholder="Contact" required>
     </div>
   </div>
   
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="city">City</label>
-      <input type="text" class="form-control" id="city">
+      <input type="text" name ="city" class="form-control" id="city">
     </div>
     
 
@@ -306,13 +318,13 @@ if (name==null || name==""){
                 die("Connection failed: " . $conn->connect_error);
 }
     else{
-        $queryForList = "SELECT type FROM services WHERE status = 'yes'";
+        $queryForList = "SELECT type FROM services";
         $result = mysqli_query($conn, $queryForList);
         while($row = mysqli_fetch_array($result)){
             ?>
     
            <div class="form-check col-sm-6">
-      <input name ="type" class="form-check-input" type="checkbox" id="name" value="<?php echo $row['type']; ?>">
+      <input type="checkbox" name = "list[]" class="form-check-input"  id="list" value="<?php echo $row['type']; ?>">
       <label class="form-check-label" for="gridCheck">
         <?php echo $row['type']; ?>
       </label>
@@ -320,10 +332,7 @@ if (name==null || name==""){
     
            
     <?php
-    
-   
-            
-        }
+     }
         mysqli_close($conn);
     }
                 ?>
@@ -331,9 +340,9 @@ if (name==null || name==""){
     </div>
                 <div class="form-group col-sm-12" >
     <label for="other" style="margin-top:20px;">Any Other Service</label>
-    <textarea class="form-control" id="other" rows="2" placeholder="type other text here...."></textarea>
+    <textarea name ="other" class="form-control" id="other" rows="2" placeholder="type other text here...."></textarea>
   </div>
-  <button type="submit" class="btn btn-primary" style="margin-top:20px">Create Request !</button>
+  <button type="submit" name="submitService" class="btn btn-primary" style="margin-top:20px">Create Request !</button>
 </form>
       </div>
       <div class="modal-footer">

@@ -74,7 +74,7 @@ if ($conn->connect_error) {
   <head>
       <link rel="icon" href="images/icon.png" type="image/gif" sizes="16x16">
     <style>
-        
+    
       #Title {
           text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
         text-align: center;
@@ -114,6 +114,7 @@ if ($conn->connect_error) {
 
       #top-div {
         background-color: aquamarine;
+       
       }
 
       #login-form {
@@ -146,7 +147,7 @@ if ($conn->connect_error) {
     <!-- image color #00BFA6-->
     <div class="container">
       <div class="row" id="top-div">
-        <div class="col-lg-12">
+        <div class="col-lg-12" >
           <p id="Title">CUSTOMER RELATIONSHIP MANAGEMENT PORTAL</p>
         </div>
       </div>
