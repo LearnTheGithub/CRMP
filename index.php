@@ -1,4 +1,4 @@
-Hello Tejveer Sharma How are you
+
  <?php
 session_start();
 $message = "";
