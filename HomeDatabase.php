@@ -19,6 +19,24 @@ if(isset($_POST['SubmitP'])){
 mysqli_close($conn);
 }
 }
+
+
+//Admin Service Add Button clicked
+else if(isset($_POST['AdminServiceAddButton'])){
+    session_start();
+    $service = $_POST['service'];
+    include('dbcon.php');
+    if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+    else{
+        $query = "INSERT INTO services(type) value('$service')";
+        $result = mysqli_query($conn, $query);
+        mysqli_close($conn);
+        header('location: admin.php');
+        
+    }
+}
    
 // USER SERVICE REQUEST FORM
 else if(isset($_POST['submitService'])){
@@ -106,7 +124,7 @@ else if(isset($_POST['submitPost'])){
     }
 }
 
-
+//registered users count
 include('dbcon.php');
 
     if ($conn->connect_error) {

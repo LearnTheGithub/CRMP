@@ -111,6 +111,46 @@ Change Password
             <div class="col-lg-5" style="background-color: #25d976;height:100px"><a href="" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-eye-open"></span> Overall Tickets </h3></a><br>
                 <div class="col-sm-6" style="border-right: 2px solid #17a356;text-align: center;">Div1</div><div class="col-sm-6" style="text-align: center;">Div2</div></div>
             </div>
+            
+             <div class="row">
+            <div class="col-lg-5" style="background-color: orange;height:100px"><a href="#AddNewService" data-toggle="modal"style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-pencil"></span>  Add New Service</h3></a><br>
+                <div class="col-sm-6" style="border-right: 2px solid #c225bd;text-align: center;">Div1</div><div class="col-sm-6" style="text-align: center;">Div2</div></div>
+                <!-- New service add modal -->
+                
+<!-- Modal -->
+<div class="modal fade" id="AddNewService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel" style="text-align:center">Add New Service</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="HomeDatabase.php" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Add Service</label>
+    <input type="text" name = "service" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Type service here">
+    
+  </div>
+ 
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button name = "AdminServiceAddButton" type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+          
+            </div>
         </div>
       </div>
     </div>

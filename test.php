@@ -1,37 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-         .parent{
-            background-color: aqua;
-            height: 500vh;
-             position: relative;
-        }
-        
-        .child-one{
-           background-color:  lightcoral;
-         position: sticky;
-            top: 0;
-            right: 0;
-        }
-        
-        .child-two{
-           background-color:  yellow;
-        }
-        
-        .child-three{
-            background-color: lightgreen;
-        }
-        
-       
-    </style>
-    </head>
-    <body>
-        <div class="parent">Parent
-        <div class="child-one child">This is Section 1</div>
-        <div class="child-two child">This is Section 2</div>
-        <div class="child-three child">This is Section 3</div>
-        </div>
-        
-    </body>
-</html>
+<form>
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">New Service Type</label>
+      <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Jane Doe">
+    </div>
+   
+    <div class="col-auto">
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+        <label class="form-check-label" for="autoSizingCheck">
+          Do you really want to add this service.
+        </label>
+      </div>
+    </div>
+    <div class="col-auto">
+      <button name = "AdminServiceAddButton" type="submit" class="btn btn-primary mb-2">Add Service</button>
+    </div>
+  </div>
+</form>

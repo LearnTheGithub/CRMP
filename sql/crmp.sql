@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2021 at 11:27 AM
+-- Generation Time: Mar 18, 2021 at 09:59 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -119,7 +119,9 @@ INSERT INTO `services` (`Sno`, `type`) VALUES
 (10, 'Website Maintenance'),
 (11, 'Logo Design'),
 (12, 'Open Source Customization'),
-(13, 'Devops');
+(13, 'Devops'),
+(14, 'Full Stack developement'),
+(15, 'Front end development');
 
 -- --------------------------------------------------------
 
@@ -193,7 +195,8 @@ INSERT INTO `user` (`email`, `password`, `contact`, `id`, `name`, `gender`, `add
 ('tejveersharma384@gmail.com', '123', '9045704462', 1, 'Tejveer Sharma', 'M', 'Suraksha Vihar Aligarh', '', '2021-03-01 07:42:36.959922'),
 ('ravi123@gmail.com', 'ravi1234', '9012121212', 2, 'ravi', 'm', 'rampur gabhaana aligarh', '', '2021-03-01 07:42:36.959922'),
 ('ramprassh@gmail.com', 'sldfjklksdfj', '9034232323', 3, 'Ram Prakash', 'M', 'ram pyari viahar', '', '2021-03-02 07:42:36.959922'),
-('hardik@gmail.com', 'skldjflkj', '9090909090', 7, 'Hardik', 'M', 'Eitah mainpuri aligarh', '', '2021-03-05 11:02:00.000000');
+('hardik@gmail.com', 'skldjflkj', '9090909090', 7, 'Hardik', 'M', 'Eitah mainpuri aligarh', '', '2021-03-05 11:02:00.000000'),
+('user@gmail.com', '1234', '9045704444', 8, 'Ramesh', 'm', 'Address 1 CITY STATE', '', '2021-03-18 08:23:12.195000');
 
 --
 -- Indexes for dumped tables
@@ -225,7 +228,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `Sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `ticket`
@@ -237,7 +240,7 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

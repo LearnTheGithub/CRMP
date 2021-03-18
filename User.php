@@ -144,7 +144,7 @@ if (name==null || name==""){
   </div>
 </div>
                 
-                <p> <a href="#" style="color:white"><span class="glyphicon glyphicon-edit"></span>  Request</a></p>
+                <p> <a href="#requestModal" data-toggle="modal" style="color:white"><span class="glyphicon glyphicon-edit"></span>  Request</a></p>
                
                 <p><a  data-toggle="modal" href="#exampleModalLong" style="color:white"><span class="glyphicon glyphicon-pencil"></span>  Create Ticket</a></p>
                 
