@@ -2,7 +2,7 @@
  <?php
 session_start();
 $message = "";
-
+$errorMsg = "";
 
 if(isset($_POST['login'])){
    
@@ -30,7 +30,7 @@ if ($conn->connect_error) {
             
         }
         else{
-            echo 'Wrong User Password!! try Again';
+            $errorMsg = '<b style = "color:red">Wrong Password!!</b> Try Again';
            
         }
         mysqli_close($conn);
@@ -234,7 +234,7 @@ ADMIN LOGIN
                        required
                 />
               </div>
-
+ <p id="errormsg" style=""><?php echo $errorMsg; ?></p>
               <button
                 type="submit"
                 class="btn btn-primary"
@@ -245,7 +245,9 @@ ADMIN LOGIN
                 LOGIN
               </button>
             </form>
+             
           </div>
+            
         </div>
       </div>
  
