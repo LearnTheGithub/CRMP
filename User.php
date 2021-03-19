@@ -1,5 +1,6 @@
 <?php
 session_start();
+$message;
 if(isset($_SESSION["user"]))
 {   
     $email = $_SESSION["user"];
@@ -23,6 +24,21 @@ if ($conn->connect_error) {
 <!DOCTYPE html>
 <html lang="en">
   <head>
+      <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+  
+
+    <!-- Bootstrap CSS -->
+   <link href="css/bootstrap.min.css" rel="stylesheet"/>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <title>User Home Page</title>
       <script>  
 function validateForm(){  
 var name=document.myform.email.value;  
@@ -69,24 +85,17 @@ if (name==null || name==""){
           
       </style>
      
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-  
-
-    <!-- Bootstrap CSS -->
-   <link href="css/bootstrap.min.css" rel="stylesheet"/>
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
-    <title>User Home Page</title>
+    
   </head>
   <body>
+       
     <div class="container" style="margin-top:5px;">
+        <?php 
+        if(isset($_SESSION["login_true"])){
+            echo '<h3 style = "font-weight: bold;color: green">Login successfully....</h3>';
+            unset($_SESSION["login_true"]);
+        }
+    ?>
       <div class="row">
         <div class="col-lg-2" style="background-color: green;">
           <div class="row">
@@ -257,6 +266,7 @@ if (name==null || name==""){
           </div>
         </div>
         <div class="col-lg-10" style="background-color: #added7;height:570px">
+            
           <a href="#"><button style="margin-top:5px"><span class="glyphicon glyphicon-home"></span> Home</button></a>
            
             

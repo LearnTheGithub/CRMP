@@ -24,7 +24,7 @@ if ($conn->connect_error) {
         $row = mysqli_num_rows($result);
         if($row==1){
             $_SESSION["user"] = $username;
-        
+            $_SESSION["login_true"] = "Yes";
            header("location:user.php");
              
             
@@ -36,6 +36,8 @@ if ($conn->connect_error) {
         mysqli_close($conn);
     }
 } 
+
+
 else if(isset($_POST['AdminLogin'])){
     $username = $_POST['username']; //get input text
   $password = $_POST['UserPassword'];
@@ -240,12 +242,14 @@ ADMIN LOGIN
                 class="btn btn-primary"
                 style="margin-bottom: 50px;"
                       name="login"
+                      id ="login2"
                       
               >
                 LOGIN
               </button>
+                
             </form>
-             
+           
           </div>
             
         </div>
