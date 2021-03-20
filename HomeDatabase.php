@@ -124,6 +124,48 @@ else if(isset($_POST['submitPost'])){
     }
 }
 
+//suspend service button clicked
+else if(isset($_POST['suspendService'])){
+    $sno = $_POST['suspendService'];
+    include('dbcon.php');
+
+    if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+    else{
+        $status = $_POST['available'];
+        if($status==='yes'){
+            $status = 'No';
+        }
+        else{
+            $status = 'yes';
+        }
+        $query = "UPDATE services SET current_status = '$status' where Sno = $sno";
+        $result = mysqli_query($conn, $query);
+        mysqli_close($conn);
+        header('location: admin.php');
+        
+    }
+}
+
+//remove service
+else if(isset($_POST['deleteService'])){
+    $sno = $_POST['deleteService'];
+    include('dbcon.php');
+
+    if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+    else{
+        
+        $query = "DELETE FROM services where Sno = $sno";
+        $result = mysqli_query($conn, $query);
+        mysqli_close($conn);
+        header('location: admin.php');
+        
+    }
+}
+
 //registered users count
 include('dbcon.php');
 

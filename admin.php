@@ -113,7 +113,7 @@ Change Password
             </div>
             
              <div class="row">
-            <div class="col-lg-5" style="background-color: orange;height:100px"><a href="#AddNewService" data-toggle="modal"style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-pencil"></span>  Add New Service</h3></a><br>
+            <div class="col-lg-5" style="background-color: #d1a677;height:100px"><a href="#AddNewService" data-toggle="modal" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-pencil"></span>  Add New Service</h3></a><br>
                 <div class="col-sm-6" style="border-right: 2px solid #c225bd;text-align: center;">Div1</div><div class="col-sm-6" style="text-align: center;">Div2</div></div>
                 <!-- New service add modal -->
                 
@@ -149,7 +149,66 @@ Change Password
     </div>
   </div>
 </div>
-          
+      <div class="col-lg-5" style="background-color: #5cc1ff;height:100px"><a href="#AllService"   data-toggle="modal" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-eye-open"></span> All Services </h3></a><br>
+                <div class="col-sm-6" style="border-right: 2px solid #17a356;text-align: center;">Div1</div><div class="col-sm-6" style="text-align: center;">Div2</div></div>
+        <!-- All services modal here -->
+<div class="modal fade" id="AllService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Services</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <?php 
+include('dbcon.php');
+if($conn->connect_error){
+    die("Connection failed : ".$connet_error);
+}
+else
+{
+    $query = "SELECT * FROM services";
+    $result = mysqli_query($conn, $query);
+    
+    echo '<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">S.No</th>
+      <th scope="col">Service Name</th>
+      <th scope="col">Available</th>
+      <th scope="col">Change</th>
+      <th scope="col">Remove</th>
+    </tr>
+  </thead>';
+     $serial = 1;
+    while($array = mysqli_fetch_array($result)){
+      
+        echo '
+  <tbody>
+    <tr>
+      <th scope="row">'.$serial.'</th>
+      <td>'.$array['type'].'</td>
+      <td>'.$array['current_status'].'</td>
+      <td><form action = "HomeDatabase.php" method = "post">
+        <input type ="text" name = "available" value = "'.$array['current_status'].'" hidden>
+        <button type = "submit" class ="btn btn-primary" value="'.$array['Sno'].'" id ="suspendService" name = "suspendService">Change</button>
+    </form></td>
+    <td><form action = "HomeDatabase.php" method = "post">
+        <button type = "submit" class ="btn btn-danger" value="'.$array['Sno'].'" id = "deleteService" name = "deleteService")">Delete Service</button>
+    </form></td>
+    </tr>';
+    $serial = $serial+1;
+    }
+    mysqli_close($conn);
+}
+?>
+      </div>
+    </div>
+  </div>
+</div>
+                        
             </div>
         </div>
       </div>

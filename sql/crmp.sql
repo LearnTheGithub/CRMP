@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2021 at 09:59 AM
+-- Generation Time: Mar 20, 2021 at 12:47 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -99,29 +99,24 @@ INSERT INTO `requests` (`type`, `available`, `name`, `email`, `status`, `contact
 
 CREATE TABLE `services` (
   `Sno` int(3) NOT NULL,
-  `type` varchar(100) NOT NULL
+  `type` varchar(100) NOT NULL,
+  `current_status` varchar(255) NOT NULL DEFAULT 'yes'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `services`
 --
 
-INSERT INTO `services` (`Sno`, `type`) VALUES
-(1, 'Website Design & Development'),
-(2, 'Ecommerce Development'),
-(3, 'Ecommerce Development'),
-(4, 'Online Payment Integration'),
-(5, 'Dash board Application'),
-(6, 'NewsLetter Design'),
-(7, 'Social Media Optimization'),
-(8, 'Dynamic Website Design'),
-(9, 'Domain Registration'),
-(10, 'Website Maintenance'),
-(11, 'Logo Design'),
-(12, 'Open Source Customization'),
-(13, 'Devops'),
-(14, 'Full Stack developement'),
-(15, 'Front end development');
+INSERT INTO `services` (`Sno`, `type`, `current_status`) VALUES
+(4, 'Online Payment Integration', 'yes'),
+(5, 'Dash board Application', 'yes'),
+(6, 'NewsLetter Design', 'yes'),
+(7, 'Social Media Optimization', 'yes'),
+(8, 'Dynamic Website Design', 'yes'),
+(9, 'Domain Registration', 'yes'),
+(10, 'Website Maintenance', 'yes'),
+(11, 'Logo Design', 'yes'),
+(12, 'Open Source Customization', 'yes');
 
 -- --------------------------------------------------------
 
