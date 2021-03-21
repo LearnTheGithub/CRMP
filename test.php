@@ -5,16 +5,15 @@ if($conn->connect_error){
 }
 else
 {
-    $query = "SELECT * FROM services";
+    $query = "SELECT * FROM requests where status = 'NO'";
     $result = mysqli_query($conn, $query);
     
     echo '<table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">S.No</th>
-      <th scope="col">Service Name</th>
-      <th scope="col">Available</th>
-      
+      <th scope="col">New Request</th>
+      <th scope="col">Requested by</th>
+      <th scope="col">Add</th>
       <th scope="col">Remove</th>
     </tr>
   </thead>';
@@ -23,15 +22,16 @@ else
         echo '
   <tbody>
     <tr>
-      <th scope="row">'.$array['Sno'].'</th>
-      <td>'.$array['type'].'</td>
-      <td>'.$array['current_status'].'
-      <form action = "HomeDatabase.php" method = "post">
-        <input type ="text" name = "available" value = "'.$array['current_status'].'" hidden>
-        <button type = "submit" value="'.$array['Sno'].'" id ="suspendService" name = "suspendService">Change</button>
+      <th scope="row">'.$array['type'].'</th>
+      
+      <td>'.$array['email'].'</td>
+      
+      <td><form action = "HomeDatabase.php" method = "post"><button type = "submit" class = "btn btn-primary" value="'.$array['type'].'" name ="AddThisService">Change</button>
     </form></td>
+    
     <td><form action = "HomeDatabase.php" method = "post">
-        <button type = "submit" value="'.$array['Sno'].'" id = "deleteService" name = "deleteService")">Delete Service</button>
+    
+        <button type = "submit" class = "btn btn-danger" value="'.$array['type'].'" name = "deleteThisService" >Delete Service</button>
     </form></td>
     
     </tr>';

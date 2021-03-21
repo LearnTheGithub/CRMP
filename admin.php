@@ -147,7 +147,11 @@ var password = document.myform.UserPassword.value;
             
              <div class="row">
             <div class="col-lg-5" style="background-color: #d1a677;height:100px"><a href="#AddNewService" data-toggle="modal" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-pencil"></span>  Add New Service</h3></a><br>
-                <div class="col-sm-6" style="border-right: 2px solid #c225bd;text-align: center;">Div1</div><div class="col-sm-6" style="text-align: center;">Div2</div></div>
+                <div class="col-sm-6" style="border-right: 2px solid #c225bd;text-align: center;"><a href="#AddNewService" data-toggle="modal">Add New</a></div><div class="col-sm-6" style="text-align: center;"><a href="addNewRequests.php">Add Requested</a> </div>
+                 
+                 </div>
+                 <!-- Add requested Service modal -->
+                 
                 <!-- New service add modal -->
                 
 <!-- Modal -->
@@ -246,7 +250,8 @@ else
         </div>
       </div>
     </div>
-      
+      <!-- add requested services Modal -->
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

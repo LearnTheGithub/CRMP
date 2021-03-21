@@ -166,6 +166,45 @@ else if(isset($_POST['deleteService'])){
     }
 }
 
+//admin add requested service
+else if(isset($_POST['AddThisService'])){
+    $type = $_POST['AddThisService'];
+    echo $type;
+    include('dbcon.php');
+
+    if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+    else{
+        $insert = "INSERT INTO services(type) value('$type')";
+        $result = mysqli_query($conn, $insert);
+        $remove = "DELETE FROM requests WHERE type = '$type'";
+        mysqli_query($conn, $remove);
+        mysqli_close($conn);
+        header('location: admin.php');
+        
+    }
+}
+
+//admin remove requested service
+else if(isset($_POST['deleteThisService'])){
+    $type = $_POST['deleteThisService'];
+    include('dbcon.php');
+
+    if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+    else{
+        
+        $query = "DELETE FROM requests where type = '$type'";
+        $result = mysqli_query($conn, $query);
+        mysqli_close($conn);
+        header('location: admin.php');
+        
+    }
+}
+
+
 //registered users count
 include('dbcon.php');
 

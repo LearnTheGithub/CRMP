@@ -328,13 +328,20 @@ if (name==null || name==""){
                 die("Connection failed: " . $conn->connect_error);
 }
     else{
-        $queryForList = "SELECT type FROM services";
+        $queryForList = "SELECT * FROM services";
         $result = mysqli_query($conn, $queryForList);
         while($row = mysqli_fetch_array($result)){
-            ?>
-    
+            if($row['current_status']==='No'){
+                $disabled ="disabled";
+            }
+            else{
+                $disabled ="";
+            }
+            
+                   ?>
+                
            <div class="form-check col-sm-6">
-      <input type="checkbox" name = "list[]" class="form-check-input"  id="list" value="<?php echo $row['type']; ?>">
+               <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip"><input type="checkbox" name = "list[]" class="form-check-input"  id="list" value="<?php echo $row['type'];?>" <?php echo $disabled; ?> ></span>
       <label class="form-check-label" for="gridCheck">
         <?php echo $row['type']; ?>
       </label>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2021 at 12:47 PM
+-- Generation Time: Mar 21, 2021 at 12:40 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `password`) VALUES
-('admin', 'admin');
+('admin', 'admin2');
 
 -- --------------------------------------------------------
 
@@ -55,41 +55,6 @@ CREATE TABLE `requests` (
   `contact` varchar(12) NOT NULL,
   `city` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `requests`
---
-
-INSERT INTO `requests` (`type`, `available`, `name`, `email`, `status`, `contact`, `city`) VALUES
-('Website Design & Development', 'true', '', '', 'NO', '', ''),
-('SEO (Search Engine Optimization)', 'true', '', '', 'NO', '', ''),
-('Web Hosting Services', 'true', '', '', 'NO', '', ''),
-('Ecommerce Development', 'true', '', '', 'NO', '', ''),
-('Online Payment Integration', 'true', '', '', 'NO', '', ''),
-('Dash board Application', 'true', '', '', 'NO', '', ''),
-('NewsLetter Design', 'true', '', '', 'NO', '', ''),
-('SMO (Social Media Optimization)', 'true', '', '', 'NO', '', ''),
-('Dynamic Website Design', 'true', '', '', 'NO', '', ''),
-(' Domain Registration', 'true', '', '', 'NO', '', ''),
-('Website Maintenance', 'true', '', '', 'NO', '', ''),
-('Logo Design', 'true', '', '', 'NO', '', ''),
-('Open Source Customization', 'true', '', '', 'NO', '', ''),
-('Devops ', 'true', 'TEJVEER SHARMA', 'tejveersharma384@gmail.com', 'yes', '9045704462', ''),
-('Devops ', 'true', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('Dynamic Website Design', 'true', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-(' Domain Registration', 'true', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('Logo Design', 'true', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('Ecommerce Development', 'true', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('Dynamic Website Design', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('', 'not', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('Open Source Customization', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('', 'not', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('Dash board Application', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('Website Design & Development', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('Ecommerce Development', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('Dash board Application', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('android applicatin', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('android application', 'not', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh');
 
 -- --------------------------------------------------------
 
@@ -108,15 +73,16 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`Sno`, `type`, `current_status`) VALUES
-(4, 'Online Payment Integration', 'yes'),
+(4, 'Online Payment Integration', 'No'),
 (5, 'Dash board Application', 'yes'),
 (6, 'NewsLetter Design', 'yes'),
 (7, 'Social Media Optimization', 'yes'),
 (8, 'Dynamic Website Design', 'yes'),
-(9, 'Domain Registration', 'yes'),
+(9, 'Domain Registration', 'No'),
 (10, 'Website Maintenance', 'yes'),
 (11, 'Logo Design', 'yes'),
-(12, 'Open Source Customization', 'yes');
+(12, 'Open Source Customization', 'yes'),
+(14, 'web developement', 'yes');
 
 -- --------------------------------------------------------
 
