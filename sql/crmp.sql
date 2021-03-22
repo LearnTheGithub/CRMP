@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2021 at 12:40 PM
+-- Generation Time: Mar 22, 2021 at 01:11 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -56,6 +56,14 @@ CREATE TABLE `requests` (
   `city` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `requests`
+--
+
+INSERT INTO `requests` (`type`, `available`, `name`, `email`, `status`, `contact`, `city`) VALUES
+('Online Payment Integration', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
+('Dash board Application', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh');
+
 -- --------------------------------------------------------
 
 --
@@ -73,7 +81,7 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`Sno`, `type`, `current_status`) VALUES
-(4, 'Online Payment Integration', 'No'),
+(4, 'Online Payment Integration', 'yes'),
 (5, 'Dash board Application', 'yes'),
 (6, 'NewsLetter Design', 'yes'),
 (7, 'Social Media Optimization', 'yes'),
@@ -81,7 +89,7 @@ INSERT INTO `services` (`Sno`, `type`, `current_status`) VALUES
 (9, 'Domain Registration', 'No'),
 (10, 'Website Maintenance', 'yes'),
 (11, 'Logo Design', 'yes'),
-(12, 'Open Source Customization', 'yes'),
+(12, 'Open Source Customization', 'No'),
 (14, 'web developement', 'yes');
 
 -- --------------------------------------------------------
@@ -119,7 +127,7 @@ CREATE TABLE `ticket` (
   `status` varchar(10) NOT NULL DEFAULT 'open',
   `posting_tIme` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   `remark` varchar(100) NOT NULL,
-  `remark_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+  `remark_time` timestamp(6) NOT NULL DEFAULT '0000-00-00 00:00:00.000000'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -127,8 +135,11 @@ CREATE TABLE `ticket` (
 --
 
 INSERT INTO `ticket` (`ticket_id`, `type`, `subject`, `ticket`, `email`, `priority`, `status`, `posting_tIme`, `remark`, `remark_time`) VALUES
-(1, 'Billing', '', 'This is problem description. i want solution as sooon as possible.', 'tejveersharma384@gmail.com', 'Urgent', 'open', '2021-03-06 16:01:55.025899', '', '2021-03-06 16:01:55.025899'),
-(3, 'Option 1', 'problem 2', 'lskdfjlksdjfl klksjflkajf ', 'tejveersharma384@gmail.com', 'Non Urgent', 'close', '2021-03-09 09:20:34.654429', '', '2021-03-09 09:20:34.654429');
+(1, 'Billing', '', 'This is problem description. i want solution as sooon as possible.', 'tejveersharma384@gmail.com', 'Urgent', 'open', '2021-03-06 16:01:55.025899', '3', '2021-03-06 16:01:55.025899'),
+(3, 'Option 1', 'problem 2', 'lskdfjlksdjfl klksjflkajf ', 'tejveersharma384@gmail.com', 'Non Urgent', 'close', '2021-03-09 09:20:34.654429', 'LSKDJFLKF', '2021-03-22 11:41:23.000000'),
+(4, 'Billing', 'subject 1', 'this is problem i m facing', 'tejveersharma384@gmail.com', 'Urgent', 'close', '2021-03-22 11:42:07.750486', 'now solved', '2021-03-22 11:46:08.000000'),
+(5, 'Option 1', 'subject2', 'this is problem description', '', 'Important', 'open', '2021-03-22 12:06:01.187474', '', '0000-00-00 00:00:00.000000'),
+(6, 'Option 1', 'subject 1', 'this is prolem i want solution', 'tejveersharma384@gmail.com', 'Important', 'close', '2021-03-22 12:06:38.994636', 'sdfsadfsdf', '2021-03-22 12:09:06.000000');
 
 -- --------------------------------------------------------
 
@@ -189,13 +200,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `Sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`

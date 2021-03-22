@@ -205,6 +205,25 @@ else if(isset($_POST['deleteThisService'])){
 }
 
 
+else if(isset($_POST['AdminRemarkButton'])){
+    
+    $ticket_id = $_POST['AdminRemarkButton'];
+    $remark = $_POST['remark'];
+    include('dbcon.php');
+
+    if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+    else{
+        
+        $query = "UPDATE ticket set remark = '$remark', remark_time = CURRENT_TIMESTAMP, status = 'close' where ticket_id = $ticket_id";
+        $result = mysqli_query($conn, $query);
+        mysqli_close($conn);
+       
+        header('location: admin_iframe1.php');
+    }
+}
+
 //registered users count
 include('dbcon.php');
 

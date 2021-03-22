@@ -38,7 +38,7 @@ else{
     <div class="card-header" id="heading'.$id.'">
       <h5 class="mb-0">
         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse'.$id.'" aria-expanded="true" aria-controls="collapse'.$id.'">
-          <span style="color:blue"><b>Ticket#id</b> <span class="badge badge-pill badge-'.$type.'">'.$status.'</span><br><small>Created on: Time</small></span>
+          <span style="color:blue"><b>Ticket#'.$array['ticket_id'].'</b> <span class="badge badge-pill badge-'.$type.'">'.$status.'</span><br><small>Created on: '.$array['posting_tIme'].'</small></span>
         </button>
       </h5>
     </div>

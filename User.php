@@ -341,7 +341,7 @@ if (name==null || name==""){
                    ?>
                 
            <div class="form-check col-sm-6">
-               <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip"><input type="checkbox" name = "list[]" class="form-check-input"  id="list" value="<?php echo $row['type'];?>" <?php echo $disabled; ?> ></span>
+      <input type="checkbox" name = "list[]" class="form-check-input"  id="list" value="<?php echo $row['type'];?>" <?php echo $disabled; ?> >
       <label class="form-check-label" for="gridCheck">
         <?php echo $row['type']; ?>
       </label>
