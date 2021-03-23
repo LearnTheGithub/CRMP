@@ -178,10 +178,10 @@ else if(isset($_POST['AddThisService'])){
     else{
         $insert = "INSERT INTO services(type) value('$type')";
         $result = mysqli_query($conn, $insert);
-        $remove = "DELETE FROM requests WHERE type = '$type'";
-        mysqli_query($conn, $remove);
+        $update = "UPDATE requests SET available = 'yes' WHERE type = '$type'";
+        mysqli_query($conn, $update);
         mysqli_close($conn);
-        header('location: admin.php');
+        header('location: addNewRequests.php');
         
     }
 }
@@ -199,7 +199,7 @@ else if(isset($_POST['deleteThisService'])){
         $query = "DELETE FROM requests where type = '$type'";
         $result = mysqli_query($conn, $query);
         mysqli_close($conn);
-        header('location: admin.php');
+        header('location: addNewRequests.php');
         
     }
 }

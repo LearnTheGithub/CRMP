@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2021 at 01:11 PM
+-- Generation Time: Mar 23, 2021 at 08:45 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -47,11 +47,11 @@ INSERT INTO `admin` (`id`, `password`) VALUES
 --
 
 CREATE TABLE `requests` (
+  `request_id` int(5) NOT NULL,
   `type` varchar(100) NOT NULL,
   `available` varchar(10) NOT NULL DEFAULT 'yes',
   `name` varchar(50) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `status` varchar(10) NOT NULL DEFAULT 'NO',
   `contact` varchar(12) NOT NULL,
   `city` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -60,9 +60,13 @@ CREATE TABLE `requests` (
 -- Dumping data for table `requests`
 --
 
-INSERT INTO `requests` (`type`, `available`, `name`, `email`, `status`, `contact`, `city`) VALUES
-('Online Payment Integration', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh'),
-('Dash board Application', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', 'NO', '9045704462', 'aligarh');
+INSERT INTO `requests` (`request_id`, `type`, `available`, `name`, `email`, `contact`, `city`) VALUES
+(1, 'Dash board Application', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh'),
+(2, 'Social Media Optimization', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh'),
+(3, 'New Service', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh'),
+(4, 'service requested', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh'),
+(5, 'new test request', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh'),
+(6, 'Online Payment Integration', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh');
 
 -- --------------------------------------------------------
 
@@ -90,7 +94,8 @@ INSERT INTO `services` (`Sno`, `type`, `current_status`) VALUES
 (10, 'Website Maintenance', 'yes'),
 (11, 'Logo Design', 'yes'),
 (12, 'Open Source Customization', 'No'),
-(14, 'web developement', 'yes');
+(14, 'web developement', 'yes'),
+(15, 'Online Payment Integration', 'yes');
 
 -- --------------------------------------------------------
 
@@ -175,6 +180,12 @@ INSERT INTO `user` (`email`, `password`, `contact`, `id`, `name`, `gender`, `add
 --
 
 --
+-- Indexes for table `requests`
+--
+ALTER TABLE `requests`
+  ADD PRIMARY KEY (`request_id`);
+
+--
 -- Indexes for table `services`
 --
 ALTER TABLE `services`
@@ -197,10 +208,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `requests`
+--
+ALTER TABLE `requests`
+  MODIFY `request_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `Sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `Sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `ticket`

@@ -134,9 +134,14 @@ if($conn->connect_error){
 }
 else
 {
-    $query = "SELECT * FROM requests where status = 'NO'";
+    $query = "SELECT * FROM requests where available = 'not'";
     $result = mysqli_query($conn, $query);
-    
+    if(mysqli_num_rows($result)=='0'){
+        echo "No new Requests.";
+    }
+    else
+    {
+      
     echo '<table class="table table-striped">
   <thead>
     <tr>
@@ -155,7 +160,7 @@ else
       
       <td>'.$array['email'].'</td>
       
-      <td><form action = "HomeDatabase.php" method = "post"><button type = "submit" class = "btn btn-primary" value="'.$array['type'].'" name ="AddThisService">Change</button>
+      <td><form action = "HomeDatabase.php" method = "post"><button type = "submit" class = "btn btn-primary" value="'.$array['type'].'" name ="AddThisService">Add Service</button>
     </form></td>
     
     <td><form action = "HomeDatabase.php" method = "post">
@@ -163,7 +168,8 @@ else
         <button type = "submit" class = "btn btn-danger" value="'.$array['type'].'" name = "deleteThisService" >Delete Service</button>
     </form></td>
     
-    </tr>';
+    </tr>';  
+    }
     
     }
     mysqli_close($conn);
