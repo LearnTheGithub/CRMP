@@ -139,9 +139,9 @@ var password = document.myform.UserPassword.value;
             </div>
             
             <div class="row">
-            <div class="col-lg-5" style="background-color: violet;height:100px"><a href="" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-pencil"></span>  Quotes requests</h3></a><br>
+            <div class="col-lg-5" style="background-color: violet;height:100px"><a href="ViewRequests.php" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-pencil"></span>  View Requests</h3></a><br>
                 <div class="col-sm-6" style="border-right: 2px solid #c225bd;text-align: center;">Div1</div><div class="col-sm-6" style="text-align: center;">Div2</div></div>
-            <div class="col-lg-5" style="background-color: #25d976;height:100px"><a href="manageTickets.php" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-eye-open"></span> Overall Tickets </h3></a><br>
+            <div class="col-lg-5" style="background-color: #25d976;height:100px"><a href="addServices.php" style="color:white;text-decoration: none;"><h3><span class="glyphicon glyphicon-eye-open"></span> Overall Tickets </h3></a><br>
                 <div class="col-sm-6" style="border-right: 2px solid #17a356;text-align: center;">Div1</div><div class="col-sm-6" style="text-align: center;">Div2</div></div>
             </div>
             

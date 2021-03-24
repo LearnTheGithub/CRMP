@@ -205,6 +205,8 @@ else if(isset($_POST['deleteThisService'])){
 }
 
 
+
+
 else if(isset($_POST['AdminRemarkButton'])){
     
     $ticket_id = $_POST['AdminRemarkButton'];
@@ -221,6 +223,25 @@ else if(isset($_POST['AdminRemarkButton'])){
         mysqli_close($conn);
        
         header('location: admin_iframe1.php');
+    }
+}
+
+else if(isset($_POST['CheckRequest'])){
+    
+    $request_id = $_POST['CheckRequest'];
+    
+    include('dbcon.php');
+
+    if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+    else{
+        
+        $query = "UPDATE requests set Seen = 'yes' where request_id = $request_id";
+        $result = mysqli_query($conn, $query);
+        mysqli_close($conn);
+       
+        header('location: admin_iframe2.php');
     }
 }
 
