@@ -275,8 +275,9 @@ if (name==null || name==""){
             
             <?php 
         if(isset($_SESSION["login_true"])){
-            ?><div id = "loginSuccess"><h3 style = "font-weight: bold;color: green">Login successfully....</h3></div> <?php
-            unset($_SESSION["login_true"]);
+            ?><div style ="text-align:center; background-color:#96ffb4; height: 20px;width:200px; color: #15ad40;" id = "loginSuccess"><h4 style = "font-weight: 2px;color: green">Login Successful.</h4></div> 
+            <?php
+           unset($_SESSION["login_true"]);
         }
     ?>
         <script>
