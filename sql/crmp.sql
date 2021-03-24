@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2021 at 08:45 AM
+-- Generation Time: Mar 24, 2021 at 12:55 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -53,20 +53,22 @@ CREATE TABLE `requests` (
   `name` varchar(50) NOT NULL,
   `email` varchar(30) NOT NULL,
   `contact` varchar(12) NOT NULL,
-  `city` varchar(20) NOT NULL
+  `city` varchar(20) NOT NULL,
+  `Seen` varchar(5) NOT NULL DEFAULT 'not'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `requests`
 --
 
-INSERT INTO `requests` (`request_id`, `type`, `available`, `name`, `email`, `contact`, `city`) VALUES
-(1, 'Dash board Application', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh'),
-(2, 'Social Media Optimization', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh'),
-(3, 'New Service', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh'),
-(4, 'service requested', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh'),
-(5, 'new test request', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh'),
-(6, 'Online Payment Integration', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh');
+INSERT INTO `requests` (`request_id`, `type`, `available`, `name`, `email`, `contact`, `city`, `Seen`) VALUES
+(1, 'Dash board Application', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh', 'not'),
+(2, 'Social Media Optimization', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh', 'yes'),
+(3, 'New Service', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh', 'not'),
+(4, 'service requested', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh', 'not'),
+(5, 'new test request', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh', 'yes'),
+(6, 'Online Payment Integration', 'yes', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh', 'not'),
+(7, 'ONLINE NEWS SITE', 'not', 'tejveer sharma', 'tejveersharma384@gmail.com', '9045704462', 'aligarh', 'not');
 
 -- --------------------------------------------------------
 
@@ -141,10 +143,10 @@ CREATE TABLE `ticket` (
 
 INSERT INTO `ticket` (`ticket_id`, `type`, `subject`, `ticket`, `email`, `priority`, `status`, `posting_tIme`, `remark`, `remark_time`) VALUES
 (1, 'Billing', '', 'This is problem description. i want solution as sooon as possible.', 'tejveersharma384@gmail.com', 'Urgent', 'open', '2021-03-06 16:01:55.025899', '3', '2021-03-06 16:01:55.025899'),
-(3, 'Option 1', 'problem 2', 'lskdfjlksdjfl klksjflkajf ', 'tejveersharma384@gmail.com', 'Non Urgent', 'close', '2021-03-09 09:20:34.654429', 'LSKDJFLKF', '2021-03-22 11:41:23.000000'),
+(3, 'Option 1', 'problem 2', 'lskdfjlksdjfl klksjflkajf ', 'tejveersharma384@gmail.com', 'Non Urgent', 'close', '2021-03-09 09:20:34.654429', 'Problem Solvd', '2021-03-24 10:41:54.000000'),
 (4, 'Billing', 'subject 1', 'this is problem i m facing', 'tejveersharma384@gmail.com', 'Urgent', 'close', '2021-03-22 11:42:07.750486', 'now solved', '2021-03-22 11:46:08.000000'),
 (5, 'Option 1', 'subject2', 'this is problem description', '', 'Important', 'open', '2021-03-22 12:06:01.187474', '', '0000-00-00 00:00:00.000000'),
-(6, 'Option 1', 'subject 1', 'this is prolem i want solution', 'tejveersharma384@gmail.com', 'Important', 'close', '2021-03-22 12:06:38.994636', 'sdfsadfsdf', '2021-03-22 12:09:06.000000');
+(6, 'Option 1', 'subject 1', 'this is prolem i want solution', 'tejveersharma384@gmail.com', 'Important', 'close', '2021-03-22 12:06:38.994636', 'Problem Solved', '2021-03-24 10:42:11.000000');
 
 -- --------------------------------------------------------
 
@@ -211,13 +213,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `request_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `request_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `Sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `ticket`
