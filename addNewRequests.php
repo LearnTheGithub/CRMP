@@ -126,7 +126,15 @@ var password = document.myform.UserPassword.value;
   </ol>
 </nav>
             <div class="row">
+                
                 <div class="col-sm-12">
+                    <div class="jumbotron jumbotron-fluid">
+ 
+    <h3 class="display-4">New Requests</h3>
+     <h4>These services are not provided by our company, would you like to add these new services....</h4>
+
+</div>
+                   
                 <?php 
 include('dbcon.php');
 if($conn->connect_error){

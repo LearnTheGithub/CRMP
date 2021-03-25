@@ -143,7 +143,7 @@ else if(isset($_POST['suspendService'])){
         $query = "UPDATE services SET current_status = '$status' where Sno = $sno";
         $result = mysqli_query($conn, $query);
         mysqli_close($conn);
-        header('location: admin.php');
+        header('location: admin_iframe3.php');
         
     }
 }
@@ -161,7 +161,7 @@ else if(isset($_POST['deleteService'])){
         $query = "DELETE FROM services where Sno = $sno";
         $result = mysqli_query($conn, $query);
         mysqli_close($conn);
-        header('location: admin.php');
+        header('location: admin_iframe3.php');
         
     }
 }
