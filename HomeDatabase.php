@@ -40,7 +40,7 @@ else if(isset($_POST['AdminServiceAddButton'])){
    
 // USER SERVICE REQUEST FORM
 else if(isset($_POST['submitService'])){
-   
+   session_start();
     $name = $_POST['name'];
     $email = $_POST['email'];
     $contact = $_POST['contact'];
@@ -51,6 +51,11 @@ else if(isset($_POST['submitService'])){
         $q2 = "INSERT INTO requests(type, name, email, contact, city, available) values('$other','$name', '$email', '$contact', '$city', 'not')";
         mysqli_query($conn, $q2);
         mysqli_close($conn);
+        $_SESSION["TITLE"] = 'Sent';
+        $_SESSION["TEXT"] = 'Your request For new Service has been sent.';
+        $_SESSION["ICON"] = 'success';
+        $_SESSION["ButtonText"] = 'OK';
+        $_SESSION["STATUS"] = 'TRUE';
         header('location: user.php');
     }
     
@@ -64,6 +69,12 @@ else if(isset($_POST['submitService'])){
        for($i = 0; $i < sizeof($services); $i++) {
            $sql = "INSERT INTO requests(type, name, email, contact, city) values('$services[$i]','$name', '$email', '$contact', '$city')";
            mysqli_query($conn, $sql);
+        $_SESSION["TITLE"] = 'Sent';
+        $_SESSION["TEXT"] = 'Your request has been sent successfully.';
+        $_SESSION["ICON"] = 'success';
+        $_SESSION["ButtonText"] = 'OK';
+        $_SESSION["STATUS"] = 'TRUE';
+           header('location: user.php');
        }
         
         mysqli_close($conn);
@@ -75,6 +86,7 @@ else if(isset($_POST['submitService'])){
 
 //USER PASSWORD CHANGE FORM
 else if(isset($_POST['submit'])){ 
+    session_start();
     $email = $_POST['email']; 
     $contact = $_POST['contact'];
     $confirmPassword = $_POST['confirmPassword'];
@@ -86,11 +98,18 @@ else if(isset($_POST['submit'])){
         $q1 = "select * from user where email = '$email' && contact = '$contact'";
         $res=mysqli_query($conn,$q1);
 	    $num=mysqli_num_rows($res);
+             
         if($num===1){
            
         $sql = "update user set password = '$confirmPassword' where email = '$email' && contact = '$contact'";
         $result = mysqli_query($conn, $sql);
-           print "<p>Successfull updation</p>";
+            $_SESSION["TITLE"] = 'Changed';
+        $_SESSION["TEXT"] = 'Password Updated successfully.';
+        $_SESSION["ICON"] = 'success';
+        $_SESSION["ButtonText"] = 'OK';
+        $_SESSION["STATUS"] = 'TRUE';
+           header('location: user.php');
+            
       }
         else{
             echo 'Something is wrong;';
@@ -118,6 +137,12 @@ else if(isset($_POST['submitPost'])){
     else{
         $query = "insert into ticket(ticket, email, subject, type, priority) values('$ticket', '$id', '$subject', '$type', '$priority');";
         $result = mysqli_query($conn, $query);
+        
+        $_SESSION["TITLE"] = 'Sent';
+        $_SESSION["TEXT"] = 'Your Complaint has been sent.';
+        $_SESSION["ICON"] = 'success';
+        $_SESSION["ButtonText"] = 'OK';
+        $_SESSION["STATUS"] = 'TRUE';
         header('location: User.php');
         mysqli_close($conn);
         
@@ -266,7 +291,7 @@ include('dbcon.php');
 
 
 
-if(isset($_POST['submit'])){ //check if form was submitted
+if(isset($_POST['submitUpdate'])){ //check if form was submitted
  
   
     $contact = $_POST['contact'];
@@ -283,11 +308,16 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
     else{
-        
+        session_start();
         
         $sql = "update user set contact = '$contact', name = '$name', address ='$address'  where email = '$email'";
         $result = mysqli_query($conn, $sql);
-           print "<p>Successfull updation</p>";
+       
+        $_SESSION["TITLE"] = 'Updated';
+        $_SESSION["TEXT"] = 'Successfully changed your profile.';
+        $_SESSION["ICON"] = 'success';
+        $_SESSION["ButtonText"] = 'OK';
+        $_SESSION["STATUS"] = 'TRUE';
       header('location: User.php');
       mysqli_close($conn);
 } 

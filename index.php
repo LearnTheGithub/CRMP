@@ -3,6 +3,12 @@
 session_start();
 $message = "";
 $errorMsg = "";
+$_SESSION["SUCCESS"] = 'TRUE';
+$_SESSION["TITLE"] = '';
+$_SESSION["TEXT"] = '';
+$_SESSION["ICON"] = '';
+$_SESSION["ButtonText"] = '';
+$_SESSION["STATUS"] = 'TRUE';
 
 if(isset($_POST['login'])){
    
@@ -21,12 +27,15 @@ if ($conn->connect_error) {
         
         $query = "select * from user where email = '$username' and password = '$password'";
         $result = mysqli_query($conn,$query);
+        $arr = mysqli_fetch_array($result);
         $row = mysqli_num_rows($result);
         if($row==1){
             $_SESSION["user"] = $username;
             $_SESSION["login_true"] = "Yes";
+            $_SESSION["TITLE"] = "Login Successfully!";
+            $_SESSION["TEXT"] = "Welcome,".$arr['name']."!!";
            header("location:user.php");
-             
+             $_SESSION["ButtonText"] = "Continue";
             
         }
         else{
