@@ -130,11 +130,11 @@ if (name==null || name==""){
   </div>
   <div class="input-group col-lg-10" style="padding-top: 15px">
     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-    <input id="name" type="text" class="form-control" name="name" value ="<?php echo $array["name"] ?>" placeholder="Name"required>
+    <input id="name" type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" name="name" value ="<?php echo $array["name"] ?>" placeholder="Name"required>
   </div>
   <div class="input-group col-lg-10" style="padding-top: 15px">
     <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
-    <input id="address" type="text" class="form-control" name="address" value ="<?php echo $array["address"] ?>"  placeholder="Address" required>
+    <input id="address" type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" name="address" value ="<?php echo $array["address"] ?>"  placeholder="Address" required>
   </div>
       <button type="submit" style="margin-top:15px;margin-bottom:10px;" class="btn btn-primary"  name="submitUpdate" >Update Now!</button>
     
@@ -173,7 +173,7 @@ if (name==null || name==""){
            
   <div class="form-group col-sm-12">
     <label for="subject">Subject</label>
-       <input type="text"  name ="subject" class="form-control" id="subject" aria-describedby="emailHelp" placeholder="Write subject">
+       <input type="text"  oninput="this.value = this.value.toUpperCase()" name ="subject" class="form-control" id="subject" aria-describedby="emailHelp" placeholder="Write subject">
     </div>
             <div class="form-group col-sm-6">
       <label for="tasktype">Task Type</label>
@@ -197,7 +197,7 @@ if (name==null || name==""){
     </div>
             <div class="form-group col-sm-12">
     <label for="description">Description</label>
-    <textarea name ="ticket" class="form-control" id="description" rows="3"></textarea>
+    <textarea name ="ticket" oninput="this.value = this.value.toUpperCase()" class="form-control" id="description" rows="3"></textarea>
   </div>
   
   <button type="submit" name="submitPost" class="btn btn-primary" style="margin-left:15px;"><span class="glyphicon glyphicon-pencil"></span> Post</button> 
@@ -310,7 +310,7 @@ if (name==null || name==""){
                 <div class="form-row">
                 <div class="form-group col-md-6">
       <label for="name">Name</label>
-      <input name ="name" type="text" class="form-control" id="name" placeholder="Name" required>
+      <input name ="name" oninput="this.value = this.value.toUpperCase()" type="text" class="form-control" id="name" placeholder="Name" required>
     </div>
                 </div>
   <div class="form-row">
@@ -327,7 +327,7 @@ if (name==null || name==""){
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="city">City</label>
-      <input type="text" name ="city" class="form-control" id="city">
+      <input type="text" name ="city" oninput="this.value = this.value.toUpperCase()" class="form-control" id="city">
     </div>
     
 
@@ -369,7 +369,7 @@ if (name==null || name==""){
     </div>
                 <div class="form-group col-sm-12" >
     <label for="other" style="margin-top:20px;">Any Other Service</label>
-    <textarea name ="other" class="form-control" id="other" rows="2" placeholder="type other text here...."></textarea>
+    <textarea name ="other" oninput="this.value = this.value.toUpperCase()" class="form-control" id="other" rows="2" placeholder="type other text here...."></textarea>
   </div>
   <button type="submit" name="submitService" class="btn btn-primary" style="margin-top:20px">Create Request !</button>
 </form>
