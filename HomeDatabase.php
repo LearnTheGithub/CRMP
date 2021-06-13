@@ -33,12 +33,6 @@ else if(isset($_POST['AdminServiceAddButton'])){
         $query = "INSERT INTO services(type) value('$service')";
         $result = mysqli_query($conn, $query);
         mysqli_close($conn);
-        $_SESSION["TITLE"] = 'ADDED';
-        $_SESSION["TEXT"] = 'A New Service has been added.';
-        $_SESSION["ICON"] = 'success';
-        $_SESSION["ButtonText"] = 'ADD ANOTHER';
-        $_SESSION["STATUS"] = 'TRUE';
-        
         header('location: admin.php');
         
     }
@@ -157,7 +151,6 @@ else if(isset($_POST['submitPost'])){
 
 //suspend service button clicked
 else if(isset($_POST['suspendService'])){
-    session_start();
     $sno = $_POST['suspendService'];
     include('dbcon.php');
 
@@ -168,25 +161,13 @@ else if(isset($_POST['suspendService'])){
         $status = $_POST['available'];
         if($status==='yes'){
             $status = 'No';
-             $_SESSION["TITLE"] = 'Not Available';
-            $_SESSION["TEXT"] = 'This service is temporary unavailable now.';
-            $_SESSION["ICON"] = 'error';
         }
         else{
             $status = 'yes';
-             $_SESSION["ICON"] = 'success';
-             $_SESSION["TITLE"] = 'Available';
-            $_SESSION["TEXT"] = 'This service is now available.';
-            
         }
         $query = "UPDATE services SET current_status = '$status' where Sno = $sno";
         $result = mysqli_query($conn, $query);
         mysqli_close($conn);
-        
-       
-        $_SESSION["ButtonText"] = 'OK';
-        $_SESSION["STATUS"] = 'TRUE';
-        
         header('location: admin_iframe3.php');
         
     }
@@ -194,7 +175,6 @@ else if(isset($_POST['suspendService'])){
 
 //remove service
 else if(isset($_POST['deleteService'])){
-    session_start();
     $sno = $_POST['deleteService'];
     include('dbcon.php');
 
@@ -206,12 +186,6 @@ else if(isset($_POST['deleteService'])){
         $query = "DELETE FROM services where Sno = $sno";
         $result = mysqli_query($conn, $query);
         mysqli_close($conn);
-        $_SESSION["TITLE"] = 'Deleted';
-        $_SESSION["TEXT"] = 'This Service has been removed.';
-        $_SESSION["ICON"] = 'success';
-        $_SESSION["ButtonText"] = 'OK';
-        $_SESSION["STATUS"] = 'TRUE';
-        
         header('location: admin_iframe3.php');
         
     }
@@ -259,7 +233,7 @@ else if(isset($_POST['deleteThisService'])){
 
 
 else if(isset($_POST['AdminRemarkButton'])){
-    session_start();
+    
     $ticket_id = $_POST['AdminRemarkButton'];
     $remark = $_POST['remark'];
     include('dbcon.php');
@@ -272,11 +246,7 @@ else if(isset($_POST['AdminRemarkButton'])){
         $query = "UPDATE ticket set remark = '$remark', remark_time = CURRENT_TIMESTAMP, status = 'close' where ticket_id = $ticket_id";
         $result = mysqli_query($conn, $query);
         mysqli_close($conn);
-        $_SESSION["TITLE"] = 'Updated';
-        $_SESSION["TEXT"] = 'Remark has been added to Ticket#'.$ticket_id.'.';
-        $_SESSION["ICON"] = 'success';
-        $_SESSION["ButtonText"] = 'OK';
-        $_SESSION["STATUS"] = 'TRUE';
+       
         header('location: admin_iframe1.php');
     }
 }
