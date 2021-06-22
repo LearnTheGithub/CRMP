@@ -9,19 +9,19 @@
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
-          ['Service', 'TOTAL'],
+          ['Status', 'TOTAL'],
           <?php 
 include('dbcon.php');
   if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
     else{
-        $query = "SELECT type, COUNT(type) as total FROM requests GROUP BY type;";
+        $query = "SELECT status, COUNT(*) as total FROM ticket GROUP BY STATUS;";
         $result = mysqli_query($conn, $query);
         while($row = mysqli_fetch_array($result)){
     ?>
             
-    ['<?php echo $row['type']; ?>', <?php echo $row['total']; ?> ],
+    ['<?php echo $row['status']; ?>', <?php echo $row['total']; ?> ],
 
 <?php   
 }
@@ -33,7 +33,7 @@ include('dbcon.php');
         ]);
 
         var options = {
-          title: 'SERVICES REQUESTED BY CLIENTS'
+          title: 'OPEN-CLOSED TICKETS'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -43,7 +43,7 @@ include('dbcon.php');
     </script>
   </head>
   <body>
-      <button type="button" onclick = "location.href = 'admin.php'">GO BACK</button>
+      <button type="button" onclick = "location.href = 'dataAnalysis.php'">REQUSTS ANALYSIS</button>
  <button type="button" onclick = "location.href = 'complaintAnalysis.php'">NEXT ANALYSIS</button>
     <div id="piechart" style="width: 900px; height: 500px;"></div>
        </body>

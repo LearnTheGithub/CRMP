@@ -216,6 +216,7 @@ ADMIN LOGIN
 
         <div class="col-lg-6" style="padding-left: 150px;">
           <div id="login-form">
+              
             <form action="" method="post">
               <div class="form-group">
                 <img
@@ -258,7 +259,9 @@ ADMIN LOGIN
               </button>
                 
             </form>
-           
+              
+           <BUTTON class = "btn btn-primary" ONCLICK = "location.href='registration.php'">NEW USER ?</BUTTON>
+                
           </div>
             
         </div>
